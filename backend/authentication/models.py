@@ -13,6 +13,9 @@ class StudentProfile(models.Model):
     points = models.IntegerField(default=0)
     role = models.CharField(max_length=10, default="")
 
+    def __str__(self):
+        return self.name
+
 @receiver(post_save, sender=User)
 def create_student_profile(sender, instance, created, **kwargs):
     if created:
@@ -32,6 +35,9 @@ class TeacherProfile(models.Model):
     sem = models.CharField(max_length=2)
     points = models.IntegerField(default=0)
     role = models.CharField(max_length=10, default="")
+
+    def __str__(self):
+        return self.name
 
 @receiver(post_save, sender=User)
 def create_teacher_profile(sender, instance, created, **kwargs):
